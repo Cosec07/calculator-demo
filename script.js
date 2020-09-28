@@ -44,6 +44,9 @@ const calculate = () => {
     case '/':
       result = parseFloat(prevInput) / parseFloat(currentInput)
       break
+    case '√':
+      result=Math.pow(parseFloat(prevInput),0.5)
+      break 
     default:
       return
   }
