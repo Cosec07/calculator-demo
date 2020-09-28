@@ -28,6 +28,9 @@ const inputDecimal = (dot) => {
 const getPercentage = () => {
   currentInput = currentInput / 100
 }
+const getSquareroot = () => {
+  currentInput=Math.pow(currentInput,0.5) 
+}
 
 const calculate = () => {
   let result = 0
@@ -43,9 +46,6 @@ const calculate = () => {
       break
     case '/':
       result = parseFloat(prevInput) / parseFloat(currentInput)
-      break
-    case '√':
-      result=Math.pow(parseFloat(prevInput),0.5)
       break 
     default:
       return
@@ -108,5 +108,11 @@ const percentage = document.querySelector(".percentage")
 
 percentage.addEventListener("click", (event) => {
   getPercentage()
+  updateScreen(currentInput)
+})
+const squareroot = document.querySelector(".squareroot")
+
+squareroot.addEventListener("click",(event) => {
+  getSquareroot()
   updateScreen(currentInput)
 })
