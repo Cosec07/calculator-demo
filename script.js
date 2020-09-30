@@ -31,7 +31,6 @@ const getPercentage = () => {
 const getSquareroot = () => {
   currentInput=Math.pow(currentInput,0.5) 
 }
-
 const calculate = () => {
   let result = 0
   switch(calculationOperator) {
@@ -47,6 +46,11 @@ const calculate = () => {
     case '/':
       result = parseFloat(prevInput) / parseFloat(currentInput)
       break 
+    case '^':
+      result = Math.pow(parseFloat(prevInput),parseFloat(currentInput))
+      break
+    case 'Log':
+      result = Math.log(parseFloat(currentInput))
     default:
       return
   }

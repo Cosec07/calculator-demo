@@ -40,14 +40,15 @@ button:hover {
   background-color: darkgray;
 }
 
-.all-clear, .zero-btn {
+.all-clear, .zero-btn{
   width: 50%;
 }
 
-.operator, .equal-sign {
+.operator, .equal-sign, .squareroot{
   background-color: orange;
 }
 
-.operator:hover, .equal-sign:hover {
+.operator:hover, .equal-sign:hover, .squareroot:hover{
   background-color: darkorange;
 }
+
