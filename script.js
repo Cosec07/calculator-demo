@@ -1,7 +1,7 @@
 let prevInput = '0'
 let calculationOperator = ''
 let currentInput = '0'
-
+var stack = [];
 const inputNumber = (number) => {
   if (currentInput === '0') {
     currentInput = number
@@ -23,34 +23,47 @@ const inputDecimal = (dot) => {
     return
   }
   currentInput += dot
+
 }
 
 const getPercentage = () => {
+  var m = currentInput
   currentInput = currentInput / 100
+  stack.push(m+'%'+100);
 }
 const getSquareroot = () => {
+  m = currentInput
   currentInput=Math.pow(currentInput,0.5) 
+  stack.push('root'+'('+m+')');
+}
+const getlog = () => {
+  m=currentInput
+  currentInput=Math.log(currentInput)
+  stack.push('Log('+m+')')
 }
 const calculate = () => {
   let result = 0
   switch(calculationOperator) {
     case '+':
       result = parseFloat(prevInput) + parseFloat(currentInput)
+      stack.push(prevInput +'+'+ currentInput);
       break
     case '-':
       result = parseFloat(prevInput) - parseFloat(currentInput)
+      stack.push(prevInput +'-'+ currentInput);
       break
     case '*':
       result = parseFloat(prevInput) * parseFloat(currentInput)
+      stack.push(prevInput +'*'+ currentInput);
       break
     case '/':
       result = parseFloat(prevInput) / parseFloat(currentInput)
+      stack.push(prevInput +'/'+ currentInput);
       break 
     case '^':
       result = Math.pow(parseFloat(prevInput),parseFloat(currentInput))
+      stack.push(prevInput +'^'+ currentInput);
       break
-    case 'Log':
-      result = Math.log(parseFloat(currentInput))
     default:
       return
   }
@@ -119,4 +132,16 @@ const squareroot = document.querySelector(".squareroot")
 squareroot.addEventListener("click",(event) => {
   getSquareroot()
   updateScreen(currentInput)
+})
+const log = document.querySelector(".Logarithm")
+
+log.addEventListener("click",(event) => {
+  getlog()
+  updateScreen(currentInput)
+})
+const prev = document.querySelector(".action")
+
+prev.addEventListener("click",(event) => {
+  var i = stack.pop();
+  updateScreen(i)
 })
